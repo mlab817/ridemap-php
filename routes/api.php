@@ -20,6 +20,7 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('register', 'register')->name('api.register');
     Route::post('logout', 'logout')->name('api.logout');
     Route::post('refresh', 'refresh')->name('api.refresh');
+    Route::get('me', 'me')->name('api.me');
 });
 
 Route::apiResource('riders', \App\Http\Controllers\API\RiderController::class);
