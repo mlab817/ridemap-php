@@ -10,6 +10,6 @@ class StationController extends Controller
     public function index()
     {
         return response()
-            ->json(Station::all());
+            ->json(Station::select('id','name')->get());
     }
 }
