@@ -24,3 +24,6 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 Route::apiResource('riders', \App\Http\Controllers\API\RiderController::class);
+
+Route::get('/stations',[\App\Http\Controllers\API\StationController::class, 'index'])
+    ->name('api.stations.index');
