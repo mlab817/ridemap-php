@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Station extends Model
 {
     use HasFactory;
+
+    public function passengers()
+    {
+        return $this->hasMany(Passenger::class, 'origin_station_id');
+    }
 }

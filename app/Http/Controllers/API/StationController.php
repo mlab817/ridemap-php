@@ -10,6 +10,7 @@ class StationController extends Controller
     public function index()
     {
         return response()
-            ->json(Station::select('id','name')->get());
+            ->json(Station::select('id','name','location')
+            ->withCount('passengers')->get());
     }
 }

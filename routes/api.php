@@ -27,3 +27,9 @@ Route::apiResource('riders', \App\Http\Controllers\API\RiderController::class);
 
 Route::get('/stations',[\App\Http\Controllers\API\StationController::class, 'index'])
     ->name('api.stations.index');
+
+Route::post('/passengers', [\App\Http\Controllers\API\PassengerController::class, 'store'])
+    ->name('api.passengers.store');
+
+Route::get('/passengers', [\App\Http\Controllers\API\PassengerController::class, 'index'])
+    ->name('api.passengers.index');
