@@ -14,13 +14,11 @@ class PassengerController extends Controller
     {
         $passengers = $request->passengers;
 
-        return response()->json($passengers);
-
         foreach ($passengers as $passenger) {
             Passenger::create([
-                'origin_station_id' => $passenger->originStationId,
-                'destination_station_id' => $passenger->destinationStationId,
-                'captured_at' => Carbon::parse($passenger->timestamp),
+                'origin_station_id' => $passenger['originStationId'],
+                'destination_station_id' => $passenger['destinationStationId'],
+                'captured_at' => Carbon::parse($passenger['timestamp']),
             ]);
         }
 
