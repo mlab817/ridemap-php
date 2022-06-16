@@ -14,6 +14,8 @@ class PassengerController extends Controller
     {
         $passengers = $request->passengers;
 
+        return response()->json($passengers);
+
         foreach ($passengers as $passenger) {
             Passenger::create([
                 'origin_station_id' => $passenger->originStationId,
