@@ -20,7 +20,7 @@ return new class extends Migration
                 ->constrained('stations')
                 ->cascadeOnDelete();
             $table->foreignId('destination_station_id')
-                ->constrained()
+                ->constrained('stations')
                 ->cascadeOnDelete();
             $table->timestamp('captured_at')
                 ->default(DB::raw('CURRENT_TIMESTAMP'));
