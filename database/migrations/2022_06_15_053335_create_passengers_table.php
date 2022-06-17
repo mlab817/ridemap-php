@@ -19,9 +19,9 @@ return new class extends Migration
             $table->foreignId('origin_station_id')
                 ->constrained('stations')
                 ->cascadeOnDelete();
-//            $table->foreignId('destination_station_id')
-//                ->constrained()
-//                ->cascadeOnDelete();
+            $table->foreignId('destination_station_id')
+                ->constrained()
+                ->cascadeOnDelete();
             $table->timestamp('captured_at')
                 ->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
