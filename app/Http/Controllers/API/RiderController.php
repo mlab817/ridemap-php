@@ -32,7 +32,10 @@ class RiderController extends Controller
      */
     public function store(Request $request)
     {
-        $rider = Rider::create($request->all());
+        foreach ($request->riders as $rider) {
+            $rider = Rider::create($rider);
+        }
+
 
         return response()->json(['data' => $rider], 200);
     }
