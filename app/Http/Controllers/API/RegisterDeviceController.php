@@ -18,20 +18,18 @@ class RegisterDeviceController extends Controller
     {
         $deviceId = $request->device_id;
 
-        if ($device = Device::where('device_id', $deviceId)->first()) {
-            return response()->json([
-                'success' => false,
-                'device'  => $device,
+        $device = Device::where('device_id', $deviceId)->first();
+
+        if (! $device) {
+            $device = Device::create([
+                'device_id' => $deviceId
             ]);
         }
 
-        $device = Device::create([
-            'device_id' => $deviceId
-        ]);
-
         return response()->json([
-            'success' => true,
-            'device'  => $device,
+            'success'   => true,
+            'device'    => $device,
+            'device_id' => $deviceId,
         ]);
     }
 }

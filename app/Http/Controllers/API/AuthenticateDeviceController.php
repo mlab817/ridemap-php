@@ -17,7 +17,7 @@ class AuthenticateDeviceController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $device = Device::where('device_id', $request->deviceId)->firstOrFail();
+        $device = Device::where('device_id', $request->device_id)->firstOrFail();
 
         $token = Auth::login($device);
 
