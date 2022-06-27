@@ -18,4 +18,9 @@ class Station extends Model
     {
         return $this->hasMany(Passenger::class, 'origin_station_id');
     }
+
+    public function kiosks()
+    {
+        return $this->hasMany(Kiosk::class, 'origin_station_id');
+    }
 }

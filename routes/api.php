@@ -42,3 +42,6 @@ Route::post('/faces', \App\Http\Controllers\API\FaceController::class)
 
 Route::post('/device-register', \App\Http\Controllers\API\RegisterDeviceController::class)
     ->name('api.device-register');
+
+Route::post('/kiosks', \App\Http\Controllers\API\KioskController::class)
+    ->name('api.kiosks.index');
