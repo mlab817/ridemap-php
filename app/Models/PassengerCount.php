@@ -10,9 +10,7 @@ class PassengerCount extends Model
     use HasFactory;
 
     protected $fillable = [
-        'plate_no',
         'station_id', // id of station
-        'bound',
         'passenger_in',
         'passenger_out',
         'user_id', // id of user

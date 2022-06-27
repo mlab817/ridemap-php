@@ -26,7 +26,7 @@ Route::controller(AuthController::class)->group(function () {
 Route::get('/stations',[\App\Http\Controllers\API\StationController::class, 'index'])
     ->name('api.stations.index');
 
-Route::post('/passengers-counts', [\App\Http\Controllers\API\PassengerCountController::class, 'store'])
+Route::post('/passenger-count', [\App\Http\Controllers\API\PassengerCountController::class, 'store'])
     ->name('api.passengers.store');
 
 Route::post('/faces', \App\Http\Controllers\API\FaceController::class)

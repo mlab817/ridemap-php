@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -15,11 +16,11 @@ return new class extends Migration
     {
         Schema::create('passenger_counts', function (Blueprint $table) {
             $table->id();
-            $table->string('plate_no');
+//            $table->string('plate_no');
             $table->foreignId('station_id')
                 ->constrained('stations')
                 ->cascadeOnDelete();
-            $table->string('bound');
+//            $table->string('bound');
             $table->unsignedBigInteger('passenger_in')->default(0);
             $table->unsignedBigInteger('passenger_out')->default(0);
             $table->timestamp('scanned_at')

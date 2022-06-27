@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Passenger;
 use App\Models\PassengerCount;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PassengerCountController extends Controller
@@ -19,7 +17,8 @@ class PassengerCountController extends Controller
 
     public function store(Request $request)
     {
-        $passenger = PassengerCount::create($request->all());
+        $passenger = PassengerCount::create($request->except('scanned_at'));
+        $passenger->scanned_at = Carbon::parse($request->scanned_at);
         $passenger->user_id = auth('api')->id();
         $passenger->save();
 
@@ -44,14 +43,14 @@ class PassengerCountController extends Controller
 
     public function per_day()
     {
-        return Passenger::select(DB::raw('DATE(captured_at) AS label'), DB::raw('COUNT(id) AS value'))
+        return PassengerCount::select(DB::raw('DATE(captured_at) AS label'), DB::raw('COUNT(id) AS value'))
             ->groupBy('label')
             ->get();
     }
 
     public function per_hour()
     {
-        return Passenger::select(DB::raw('DATE_FORMAT(captured_at, "%Y %M %d %H") AS label'), DB::raw('COUNT(id) AS value'))
+        return PassengerCount::select(DB::raw('DATE_FORMAT(captured_at, "%Y %M %d %H") AS label'), DB::raw('COUNT(id) AS value'))
             ->groupBy('label')
             ->get();
     }
