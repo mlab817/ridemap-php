@@ -15,4 +15,9 @@ class Face extends Model
         'station_id',
         'scanned_at',
     ];
+
+    public function faces()
+    {
+        return $this->belongsTo(Station::class);
+    }
 }
