@@ -13,7 +13,7 @@ class KioskController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:devices');
+        $this->middleware('auth:api');
     }
 
     /**
@@ -26,7 +26,7 @@ class KioskController extends Controller
     {
         $passengers = $request->passengers;
 
-        $deviceId = Auth::guard('devices')->id();
+        $userId = Auth::guard('api')->id();
 
         try {
             $successfulInsert = 0;
@@ -36,7 +36,7 @@ class KioskController extends Controller
                     'origin_station_id' => $passenger['originStationId'],
                     'destination_station_id' => $passenger['destinationStationId'],
                     'captured_at' => Carbon::parse($passenger['timestamp']),
-                    'device_id' => $deviceId,
+                    'user_id' => $userId,
                 ])) {
                     $successfulInsert += 1;
                 }

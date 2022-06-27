@@ -4,12 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-/**
- * RAMA Integration: adds passenger_count to RAMA scan
- */
-class Passenger extends Model
+class PassengerCount extends Model
 {
     use HasFactory;
 

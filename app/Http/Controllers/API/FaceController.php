@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Events\FacesDetected;
 use App\Http\Controllers\Controller;
 use App\Models\Face;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,7 +13,7 @@ class FaceController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:devices');
+        $this->middleware('auth:api');
     }
 
     /**
@@ -25,10 +26,15 @@ class FaceController extends Controller
     {
         $faces = $request->faces;
 
-        $deviceId = Auth::guard('devices')->id();
+        $userId = Auth::guard('api')->id();
 
         foreach ($faces as $face) {
-            Face::create($face + ['device_id' => $deviceId]);
+            Face::create([
+                'face_id'       => $face['face_id'],
+                'station_id'    => $face['station_id'],
+                'timestamp'     => Carbon::parse($face['timestamp']),
+                'user_id'       => $userId,
+            ]);
         }
 
         event(new FacesDetected($faces));

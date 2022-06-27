@@ -16,14 +16,10 @@ return new class extends Migration
     {
         Schema::create('passenger_qrs', function (Blueprint $table) {
             $table->id();
-            $table->string('plate_no');
             $table->foreignId('station_id')
                 ->constrained('stations')
                 ->cascadeOnDelete();
-            $table->string('bound');
             $table->string('qr_code');
-            $table->string('mode')
-                ->nullable();
             $table->timestamp('scanned_at')
                 ->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->unsignedBigInteger('user_id')

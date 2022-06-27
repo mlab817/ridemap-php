@@ -23,7 +23,7 @@ return new class extends Migration
                 ->cascadeOnDelete();
             $table->timestamp('captured_at')
                 ->default(\Illuminate\Support\Facades\DB::raw('CURRENT_TIMESTAMP'));
-            $table->foreignId('device_id')
+            $table->foreignId('user_id')
                 ->nullable()
                 ->constrained()
                 ->nullOnDelete();

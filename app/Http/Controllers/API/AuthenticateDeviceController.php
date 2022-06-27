@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Device;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,14 +17,22 @@ class AuthenticateDeviceController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $device = Device::where('device_id', $request->device_id)->firstOrFail();
+        $user = User::where('device_id', $request->device_id)->first();
 
-        $token = Auth::login($device);
+        if (! $user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Device not registered',
+                'device_id'=> $request->device_id,
+            ]);
+        }
+
+        $token = Auth::login($user);
 
         return response()->json([
             'token'     => $token,
             'success'   => true,
-            'device'    => $device,
+            'user'    => $user,
         ]);
     }
 }

@@ -4,7 +4,9 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\PassengerQr;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PassengerQrController extends Controller
 {
@@ -23,13 +25,24 @@ class PassengerQrController extends Controller
     {
         $scans = $request->scans;
 
+        $userId = Auth::guard('api')->id();
+
+        $scansAdded = 0;
+
         foreach ($scans as $scan) {
-            PassengerQr::create($scan);
+            if (PassengerQr::create([
+                'qr_code'       => $scan['qr_code'],
+                'station_id'    => $scan['station_id'],
+                'scanned_at'    => Carbon::parse($scan['scanned_at']),
+                'user_id'       => $userId
+            ])) {
+                $scansAdded += 1;
+            }
         }
 
         return response()->json([
             'success' => true,
-            'data' => null
+            'data' => $scansAdded . ' inserted into the database.'
         ]);
     }
 }

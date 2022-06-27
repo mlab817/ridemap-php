@@ -14,6 +14,7 @@ class Face extends Model
         'face_id',
         'station_id',
         'scanned_at',
+        'user_id',
     ];
 
     public function faces()

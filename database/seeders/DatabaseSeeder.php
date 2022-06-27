@@ -22,9 +22,8 @@ class DatabaseSeeder extends Seeder
              'name' => 'Admin User',
              'email' => 'admin@admin.com',
              'password' => Hash::make('password'),
+             'device_id' => 'E999456F-DF6A-47E1-B652-170426117CBB'
          ]);
-
-         Device::create(['device_id' => '123456789']);
 
          $this->call(StationsSeeder::class);
     }

@@ -23,25 +23,20 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('me', 'me')->name('api.me');
 });
 
-Route::apiResource('riders', \App\Http\Controllers\API\RiderController::class);
-
 Route::get('/stations',[\App\Http\Controllers\API\StationController::class, 'index'])
     ->name('api.stations.index');
 
-Route::post('/passengers', [\App\Http\Controllers\API\PassengerController::class, 'store'])
+Route::post('/passengers-counts', [\App\Http\Controllers\API\PassengerCountController::class, 'store'])
     ->name('api.passengers.store');
-
-Route::get('/passengers', [\App\Http\Controllers\API\PassengerController::class, 'index'])
-    ->name('api.passengers.index');
-
-Route::post('/device-auth', \App\Http\Controllers\API\AuthenticateDeviceController::class)
-    ->name('api.device-auth');
 
 Route::post('/faces', \App\Http\Controllers\API\FaceController::class)
     ->name('api.faces');
 
-Route::post('/device-register', \App\Http\Controllers\API\RegisterDeviceController::class)
-    ->name('api.device-register');
-
 Route::post('/kiosks', \App\Http\Controllers\API\KioskController::class)
     ->name('api.kiosks.store');
+
+Route::post('/device-auth', \App\Http\Controllers\API\AuthenticateDeviceController::class)
+    ->name('api.device-auth');
+
+Route::post('/qrs', \App\Http\Controllers\API\PassengerQrController::class)
+    ->name('api.qrs');

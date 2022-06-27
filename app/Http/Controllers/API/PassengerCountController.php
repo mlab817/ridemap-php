@@ -4,12 +4,13 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Passenger;
+use App\Models\PassengerCount;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class PassengerController extends Controller
+class PassengerCountController extends Controller
 {
     public function __construct()
     {
@@ -18,7 +19,9 @@ class PassengerController extends Controller
 
     public function store(Request $request)
     {
-        $passenger = Passenger::create($request->all());
+        $passenger = PassengerCount::create($request->all());
+        $passenger->user_id = auth('api')->id();
+        $passenger->save();
 
         return response()->json([
             'success' => true,

@@ -10,11 +10,8 @@ class PassengerQr extends Model
     use HasFactory;
 
     protected $fillable = [
-        'plate_no',
         'station_id',
-        'bound',
         'qr_code',
-        'mode',
         'scanned_at',
         'user_id',
     ];

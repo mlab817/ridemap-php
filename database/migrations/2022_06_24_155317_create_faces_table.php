@@ -15,9 +15,14 @@ return new class extends Migration
     {
         Schema::create('faces', function (Blueprint $table) {
             $table->id();
-            $table->string('device_id');
             $table->unsignedBigInteger('face_id');
-            $table->unsignedBigInteger('station_id');
+            $table->foreignId('station_id')
+                ->constrained()
+                ->cascadeOnDelete();
+            $table->foreignId('user_id')
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete();
             $table->timestamp('scanned_at')
                 ->default(\Illuminate\Support\Facades\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
