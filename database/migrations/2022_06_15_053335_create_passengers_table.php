@@ -22,8 +22,7 @@ return new class extends Migration
                 ->cascadeOnDelete();
             $table->string('bound');
             $table->unsignedBigInteger('passenger_in')->default(0);
-            $table->unsignedBigInteger('passenger_in');
-            $table->foreignId('device_id')->default(0);
+            $table->unsignedBigInteger('passenger_out')->default(0);
             $table->timestamp('scanned_at')
                 ->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->unsignedBigInteger('user_id')
