@@ -6,19 +6,27 @@ use App\Http\Controllers\Controller;
 use App\Models\Passenger;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PassengerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:devices');
+    }
+
     public function store(Request $request)
     {
         $passengers = $request->passengers;
+        $deviceId = Auth::guard('devices')->id();
 
         foreach ($passengers as $passenger) {
             Passenger::create([
                 'origin_station_id' => $passenger['originStationId'],
                 'destination_station_id' => $passenger['destinationStationId'],
                 'captured_at' => Carbon::parse($passenger['timestamp']),
+                'device_id' => $deviceId,
             ]);
         }
 

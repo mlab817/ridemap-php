@@ -45,6 +45,11 @@ return [
             'driver' => 'jwt',
             'provider' => 'users',
         ],
+
+        'devices' => [
+            'driver' => 'jwt',
+            'provider' => 'devices',
+        ],
     ],
 
     /*
@@ -74,6 +79,12 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+
+        'devices' => [
+            'driver' => 'database',
+            'model' => \App\Models\Device::class,
+            'table' => 'devices',
+        ],
     ],
 
     /*

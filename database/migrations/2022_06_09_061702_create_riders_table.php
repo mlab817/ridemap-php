@@ -15,15 +15,15 @@ return new class extends Migration
     {
         Schema::create('riders', function (Blueprint $table) {
             $table->id();
+            $table->uuid();
             $table->string('plate_no')
                 ->nullable();
             $table->unsignedInteger('station_id')
                 ->nullable();
-            $table->string('route_code')
-                ->nullable();
             $table->integer('mode')
                 ->nullable();
-            $table->string('qr_info')
+            $table->string('bound');
+            $table->string('qr_code')
                 ->nullable();
             $table->foreignId('user_id')
                 ->nullable()

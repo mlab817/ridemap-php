@@ -33,3 +33,12 @@ Route::post('/passengers', [\App\Http\Controllers\API\PassengerController::class
 
 Route::get('/passengers', [\App\Http\Controllers\API\PassengerController::class, 'index'])
     ->name('api.passengers.index');
+
+Route::post('/device-auth', \App\Http\Controllers\API\AuthenticateDeviceController::class)
+    ->name('api.device-auth');
+
+Route::post('/faces', \App\Http\Controllers\API\FaceController::class)
+    ->name('api.faces');
+
+Route::post('/device-register', \App\Http\Controllers\API\RegisterDeviceController::class)
+    ->name('api.device-register');

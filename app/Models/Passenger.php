@@ -13,6 +13,7 @@ class Passenger extends Model
     protected $fillable = [
         'origin_station_id',
         'destination_station_id',
+        'device_id',
         'captured_at',
     ];
 

@@ -10,11 +10,12 @@ class Rider extends Model
     use HasFactory;
 
     protected $fillable = [
+        'uuid',
         'plate_no',
         'station_id', // id of station
-        'route_code',
+        'bound',
         'mode', // 1 = load, -1 = unload
-        'qr_info',
+        'qr_code',
         'user_id', // id of user
         'scanned_at',
     ];

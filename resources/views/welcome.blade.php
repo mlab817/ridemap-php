@@ -151,7 +151,8 @@
                 await initializeChart()
             });
 
-            const interval = setInterval(async function () {
+            // const interval = setInterval(async function () {
+            async function createCharts() {
                 const config = {
                     type: 'bar',
                     animation: false,
@@ -176,7 +177,24 @@
                 }
 
                 await fetchDataAndCreateMap()
-            }, 5 * 1000) // 15K seconds
+            }
+            // }, 5 * 1000) // 15K seconds
+        </script>
+
+        <script src="{{ mix('js/app.js') }}"></script>
+
+        <script src="//js.pusher.com/3.1/pusher.min.js"></script>
+
+        <script>
+            const pusher = new Pusher('{{ config('broadcasting.connections.pusher.key') }}', {
+                encrypted: true
+            })
+
+            const channel = pusher.subscribe('faces-detected')
+
+            channel.bind('App\\Events\\FacesDetected', function (data) {
+                console.log(data)
+            })
         </script>
     </body>
 </html>

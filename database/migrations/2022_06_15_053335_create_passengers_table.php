@@ -22,6 +22,10 @@ return new class extends Migration
             $table->foreignId('destination_station_id')
                 ->constrained('stations')
                 ->cascadeOnDelete();
+            $table->foreignId('device_id')
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete();
             $table->timestamp('captured_at')
                 ->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
