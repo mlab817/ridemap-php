@@ -29,18 +29,22 @@ class KioskController extends Controller
         $deviceId = Auth::guard('devices')->id();
 
         try {
+            $successfulInsert = 0;
+
             foreach ($passengers as $passenger) {
-                Kiosk::create([
+                if (Kiosk::create([
                     'origin_station_id' => $passenger['originStationId'],
                     'destination_station_id' => $passenger['destinationStationId'],
                     'captured_at' => Carbon::parse($passenger['timestamp']),
                     'device_id' => $deviceId,
-                ]);
+                ])) {
+                    $successfulInsert += 1;
+                }
             }
 
             return response()->json([
                 'success' => true,
-                'data' => count($passengers) . ' inserted into database.',
+                'data' => $successfulInsert . ' inserted into database.',
             ]);
         } catch (\Exception $e) {
             return response()->json([
