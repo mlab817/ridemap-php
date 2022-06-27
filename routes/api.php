@@ -44,4 +44,4 @@ Route::post('/device-register', \App\Http\Controllers\API\RegisterDeviceControll
     ->name('api.device-register');
 
 Route::post('/kiosks', \App\Http\Controllers\API\KioskController::class)
-    ->name('api.kiosks.index');
+    ->name('api.kiosks.store');
