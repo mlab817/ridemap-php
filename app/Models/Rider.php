@@ -19,4 +19,9 @@ class Rider extends Model
         'user_id', // id of user
         'scanned_at',
     ];
+
+    public function station()
+    {
+        return $this->belongsTo(Station::class);
+    }
 }

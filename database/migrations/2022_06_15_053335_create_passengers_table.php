@@ -16,18 +16,18 @@ return new class extends Migration
     {
         Schema::create('passengers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('origin_station_id')
+            $table->string('plate_no');
+            $table->foreignId('station_id')
                 ->constrained('stations')
                 ->cascadeOnDelete();
-            $table->foreignId('destination_station_id')
-                ->constrained('stations')
-                ->cascadeOnDelete();
-            $table->foreignId('device_id')
-                ->nullable()
-                ->constrained()
-                ->nullOnDelete();
-            $table->timestamp('captured_at')
+            $table->string('bound');
+            $table->unsignedBigInteger('passenger_in')->default(0);
+            $table->unsignedBigInteger('passenger_in');
+            $table->foreignId('device_id')->default(0);
+            $table->timestamp('scanned_at')
                 ->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->unsignedBigInteger('user_id')
+                ->nullable();
             $table->timestamps();
         });
     }
