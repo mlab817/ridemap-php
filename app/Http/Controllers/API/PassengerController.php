@@ -13,25 +13,16 @@ class PassengerController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:devices');
+        $this->middleware('auth:api');
     }
 
     public function store(Request $request)
     {
-        $passengers = $request->passengers;
-        $deviceId = Auth::guard('devices')->id();
-
-        foreach ($passengers as $passenger) {
-            Passenger::create([
-                'origin_station_id' => $passenger['originStationId'],
-                'destination_station_id' => $passenger['destinationStationId'],
-                'captured_at' => Carbon::parse($passenger['timestamp']),
-                'device_id' => $deviceId,
-            ]);
-        }
+        $passenger = Passenger::create($request->all());
 
         return response()->json([
             'success' => true,
+            'data' => $passenger,
         ]);
     }
 
