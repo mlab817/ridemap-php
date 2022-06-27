@@ -14,6 +14,11 @@ class Station extends Model
         return $this->hasMany(Face::class);
     }
 
+    public function passenger_qrs()
+    {
+        return $this->hasMany(PassengerQr::class);
+    }
+
     public function passengers()
     {
         return $this->hasMany(Passenger::class, 'station_id');

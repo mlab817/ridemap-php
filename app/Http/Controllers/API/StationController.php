@@ -11,7 +11,7 @@ class StationController extends Controller
     {
         return response()
             ->json(Station::select('id','name','location')
-            ->withCount('kiosks','faces')
+            ->withCount('kiosks','faces','passenger_qrs')
             ->withSum('passengers','passenger_in')
             ->get());
     }
