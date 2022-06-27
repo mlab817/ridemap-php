@@ -12,7 +12,7 @@ class StationController extends Controller
         return response()
             ->json(Station::select('id','name','location')
             ->withCount('kiosks','faces')
-            ->withSum('passengers.passenger_in')
+            ->withSum('passengers','passenger_in')
             ->get());
     }
 }
