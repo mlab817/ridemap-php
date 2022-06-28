@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { HorizontalGridLines, VerticalBarSeries, VerticalGridLines, XAxis, XYPlot, YAxis} from "react-vis";
+import {Link, usePage} from "@inertiajs/inertia-react";
 
-const Dashboard = ({ stations }) => {
+const Dashboard = ({ stations, type }) => {
     const [data, setData] = useState([])
 
     useEffect(() => {
@@ -12,14 +13,31 @@ const Dashboard = ({ stations }) => {
 
     return (
         <div className="container-fluid text-center">
-            <h1>Dashboard</h1>
+            <h1 className="h1">
+                Dashboard
+            </h1>
+
             <a href="/register">Register new user</a>
 
-            <div style={{
-                display: 'flex',
-                justifyContent: 'center',
-                marginTop: 20,
-            }}>
+            <ul className="nav nav-pills nav-fill justify-content-center mt-3 mb-3">
+                <li className="nav-item">
+                    <Link
+                        href="/"
+                        data={{ by: 'count' }}
+                        className={`nav-link ${type === 'count' && 'active'}`}>Count</Link>
+                </li>
+                <li className="nav-item">
+                    <Link href="/" data={{ by: 'qr' }} className={`nav-link ${type === 'qr' && 'active'}`}>QR</Link>
+                </li>
+                <li className="nav-item">
+                    <Link href="/" data={{ by: 'kiosk' }} className={`nav-link ${type === 'kiosk' && 'active'}`}>Kiosk</Link>
+                </li>
+                <li className="nav-item">
+                    <Link href="/" data={{ by: 'faces' }} className={`nav-link ${type === 'faces' && 'active'}`}>Faces</Link>
+                </li>
+            </ul>
+
+            <div className="row justify-content-center">
                 {
                     data.length && (
                         <XYPlot
@@ -31,7 +49,7 @@ const Dashboard = ({ stations }) => {
                             }}
                             xDistance={200}
                             height={window.innerHeight * 0.85}
-                            width={window.innerWidth * 0.60}>
+                            width={window.innerWidth * .95}>
                             <VerticalGridLines />
                             <HorizontalGridLines />
                             <XAxis style={{
