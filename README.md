@@ -4,12 +4,12 @@
     </a>
 </p>
 
-## About RIDEMAP
+## About
 
 Ridemap is a web + mobile application designed to monitor ridership demand
 under the Public Utility Vehicle Service Contracting  (PUVSC) Program.
 
-## Under the Hood
+## Overview
 
 This web application was developed through [Laravel](https://laravel.com) -
 a web application framework with expressive, elegant syntax built using PHP.
@@ -43,6 +43,18 @@ and submission of data:
 | POST   | /api/faces | Receives and saves data on faces detected  |
 
 ## Requirements
+
+To update this app, you must have the following:
+
+1. PHP 7.3 and up
+2. Composer
+3. Node, NPM and Yarn
+4. MySQL
+5. Github
+
+It is recommended to use [Laragon](https://laragon.org) as the development environment for Laravel
+as it already contains requirements 1-5. You can either install github as CLI or GUI using Github
+Desktop.
 
 Composer dependencies:
 
@@ -91,6 +103,75 @@ NPM dependencies:
 > Important: This app has been intentionally developed with Laravel `8.*` to ensure
 compatibility with most servers as the latest version of Laravel no longer
 supports PHP versions below 8.0.
+
+## Getting Started
+
+Once you have the requirements, follow the following to set up your development environment:
+
+1. Clone the repository to your local machine with:
+
+```console
+git clone https://github.com/mlab817/ridemap-php.git {folderName}
+```
+
+2. Enter the project root folder with:
+
+```console
+cd ridemap-php
+```
+
+3. Run composer install:
+
+```console
+composer install
+```
+
+4. Duplicate and rename .env.example to .env
+
+```console
+cp .env.example .env
+```
+
+5. Generate the app key and jwt secret key
+
+```console
+php artisan key:generate
+php artisan jwt:secret
+```
+
+These commands will update the APP_KEY, JWT_SECRET, and JWT_ALGO in the .env file.
+
+6. Update the app configuration in the .env, particularly the db config.
+
+```dotenv
+DB_HOST=
+DB_PORT=
+DB_DATABASE=
+DB_USERNAME=
+DB_PASSWORD=
+```
+
+Make sure you create the database in mysql and assigned it a user and password.
+
+7. Migrate the tables to the database
+
+```console
+php artisan migrate --seed
+```
+
+This command will insert an admin user and the list of stations.
+
+8. Run the following command to watch for file changes in assets (JS and CSS):
+
+```console
+npm run watch
+```
+
+9. Start the server:
+
+```console
+php artisan serve
+```
 
 ## Pre-deployment
 
@@ -153,18 +234,6 @@ DB_PASSWORD=
 5. (Optional) Run `php artisan optimize` in the command line / terminal to cache the views, routes, and config
 to speed up the app.
 
-### Git Version Control
-
-1. Clone the repository to the server using `git clone https://github.com/mlab817/ridemap-php.git`.
-Replace the provided repository URL with your repo url.
-2. Duplicate the `.env.example` and rename to `.env` using `cp .env.example .env`.
-3. Update the configuration values similar to the above.
-4. Run `composer install` and `npm install` to install the dependencies.
-5. Run `npm run prod` to build the js and css assets.
-
-Note: For the database, you can dump your local database and restore it
-in the server database.
-
 ## Mobiles Apps
 
 Mobile apps are used to collect data for the ridership demand. There 
@@ -178,6 +247,34 @@ factors.
 4. [Ridemap Kiosk](https://github.com/mlab817/ridemap-kiosk)
 
 Click on their respective link to learn more.
+
+## Basic Troubleshooting
+
+Below is a compilation of some tips and common errors encountered when using Laravel:
+
+1. When in development environment, set APP_DEBUG=true in the .env. This will ensure
+that error information are displayed.
+
+2. It is common to encounter errors when installing dependencies using
+Composer. Just make sure your PHP version meets the minimum requirement.
+Avoid running `composer update` as this can cause conflicts in dependency versions.
+
+4. `Error: Specified key was too long`. Edit the following in AppServiceProvider:
+
+```php
+public function boot()
+{
+    Schema::defaultStringLength(191);
+}
+```
+
+3. `Missing Class` which can happen when files are deleted manually.
+Run `composer dumpautoload` and search for usage for deleted files particularly 
+use section of files.
+
+4. `Route not found` which can sometimes be caused by routes being cached.
+Run `php artisan route:clear`. You may also run `php artisan route:list` to view all
+existing routes of the application.
 
 ## Author
 
