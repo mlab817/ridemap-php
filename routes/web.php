@@ -19,3 +19,9 @@ Route::post('/register', [\App\Http\Controllers\RegisterController::class, 'regi
     ->name('register.registerUser');
 Route::get('/register', [\App\Http\Controllers\RegisterController::class, 'showForm'])
     ->name('register.showForm');
+
+Route::get('/optimize', function () {
+    \Illuminate\Support\Facades\Artisan::call('artisan optimize');
+
+    return 'App optimized. <a href="/">Go back to dashboard</a>';
+});
