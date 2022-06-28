@@ -11,8 +11,9 @@ const Dashboard = ({ stations }) => {
     }, [stations])
 
     return (
-        <div>
+        <div className="container-fluid text-center">
             <h1>Dashboard</h1>
+            <a href="/register">Register new user</a>
 
             <div style={{
                 display: 'flex',

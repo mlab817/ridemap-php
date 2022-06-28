@@ -32,12 +32,14 @@ window.Echo = new Echo({
 });
 
 import React from 'react'
-import { render } from 'react-dom'
+import { createRoot } from "react-dom/client";
 import { createInertiaApp } from '@inertiajs/inertia-react'
+
+const root = createRoot(document.getElementById('app'))
 
 createInertiaApp({
     resolve: name => require(`./Pages/${name}`),
     setup({ el, App, props }) {
-        render(<App {...props} />, el)
+        root.render(<App {...props} />)
     },
 })
