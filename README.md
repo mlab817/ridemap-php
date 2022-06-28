@@ -173,6 +173,10 @@ npm run watch
 php artisan serve
 ```
 
+## Entity Relationship Diagram
+
+![ridemap erd](https://user-images.githubusercontent.com/29625844/176199658-a8867c79-e6fb-4903-b233-7a656d33de19.png =x250)
+
 ## Pre-deployment
 
 To compile the JS and CSS assets, run the following command:
@@ -234,7 +238,7 @@ DB_PASSWORD=
 5. (Optional) Run `php artisan optimize` in the command line / terminal to cache the views, routes, and config
 to speed up the app.
 
-## Mobiles Apps
+## Mobile Apps
 
 Mobile apps are used to collect data for the ridership demand. There 
 are four prototype versions of the app that needs to be tested and
