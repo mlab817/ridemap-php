@@ -117,6 +117,20 @@ Replace the provided repository URL with your repo url.
 Note: For the database, you can dump your local database and restore it
 in the server database.
 
+## Mobiles Apps
+
+Mobile apps are used to collect data for the ridership demand. There 
+are four prototype versions of the app that needs to be tested and
+enhanced based on the performance in the field as well as other
+factors.
+
+1. [Ridemap Counter](https://github.com/mlab817/ridemap-counter)
+2. [Ridemap Face Scanner](https://github.com/mlab817/ridemap-face-scanner)
+3. [Ridemap QR Scanner](https://github.com/mlab817/ridemap-qr)
+4. [Ridemap Kiosk](https://github.com/mlab817/ridemap-kiosk)
+
+Click on their respective link to learn more.
+
 ## Author
 
 This web app is developed by [Mark Lester Bolotaolo](https://github.com/mlab817).
