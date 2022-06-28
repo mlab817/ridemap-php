@@ -4,6 +4,20 @@
     </a>
 </p>
 
+# Content
+
+[About](#about)
+[Overview](#overview)
+[Requirements](#requirements)
+[Getting Started](#getting-started)
+[Folder Structures](#folder-structure)
+[Entity Relationship Diagram](#entity-relationship-diagram)
+[Pre-deployment](#pre-deployment)
+[Deployment](#deployment)
+[Mobile Apps](#mobile-apps)
+[Basic Troubleshooting](#basic-troubleshooting)
+[Author](#author)
+
 ## About
 
 Ridemap is a web + mobile application designed to monitor ridership demand
