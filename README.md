@@ -14,7 +14,7 @@ under the Public Utility Vehicle Service Contracting  (PUVSC) Program.
 This web application was developed through [Laravel](https://laravel.com) -
 a web application framework with expressive, elegant syntax built using PHP.
 
-This main purpose of this app is to bridge the mobile
+The main purpose of this app is to bridge the mobile
 applications with the database. It has only two main pages:
 
 1. Dashboard; and
@@ -44,7 +44,7 @@ and submission of data:
 
 ## Requirements
 
-Composer:
+Composer dependencies:
 
 - "php": "^7.3|^8.0",
 - "fruitcake/laravel-cors": "^2.0",
@@ -56,7 +56,26 @@ Composer:
 - "laravel/ui": "^3.4",
 - "php-open-source-saver/jwt-auth": "^1.4"
 
-NPM:
+You can install composer dependencies using the command which will install dependencies
+based on the `composer.lock` file:
+
+```console
+composer install
+```
+
+If you wish to update dependencies versions, you may run the following instead:
+
+```console
+composer update
+```
+
+To install new dependencies, just run:
+
+```console
+composer require vendor/package
+```
+
+NPM dependencies:
 
 - "@babel/preset-react": "^7.18.6",
 - "@inertiajs/inertia": "^0.11.0",
@@ -69,11 +88,34 @@ NPM:
 - "react-dom": "^18.2.0",
 - "react-vis": "^1.11.7"
 
+> Important: This app has been intentionally developed with Laravel `8.*` to ensure
+compatibility with most servers as the latest version of Laravel no longer
+supports PHP versions below 8.0.
+
 ## Pre-deployment
 
-Make sure to run `npm run prod` to compile the js and css assets. This will generate
-the js and css files as `public/js/app.js` and `public/css/app.css` files, respectively.
-Laravel will automatically map its assets to this location.
+To compile the JS and CSS assets, run the following command:
+
+```console
+npm run prod
+```
+
+This will generate the js and css files as `public/js/app.js` and `public/css/app.css` 
+files, respectively. Laravel will automatically map its assets to this location.
+
+> Known issue: When your app fails to load css and js functionalities,
+> this is usually because the js/css assets are served over insecure connection.
+> This can be fixed by adding the following code in AppServiceProvider:
+
+```php
+public function register()
+{
+    // add the following code
+    if ($this->app->environment(['production'])) {
+        URL::forceScheme('https');
+    }
+}
+```
 
 ## Deployment
 
