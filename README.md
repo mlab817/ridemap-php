@@ -117,6 +117,12 @@ public function register()
 }
 ```
 
+> Known issue: The app may sometimes fail to display changes made in the assets. For example,
+> user interface may not update even after running `npm run prod` and uploading the assets.
+> This is usually caused by the browser loading assets from the memory/disk cache. To solve this,
+> it is recommended to clear the browser cache. The alternative is to disable caching of assets
+> but this could cause performance issues as assets will then be downloaded for every page refresh. 
+
 ## Deployment
 
 This web application can be deployed on servers that support PHP version 7.3 and up.
