@@ -21,7 +21,7 @@ Route::get('/register', [\App\Http\Controllers\RegisterController::class, 'showF
     ->name('register.showForm');
 
 Route::get('/optimize', function () {
-    \Illuminate\Support\Facades\Artisan::call('artisan optimize');
+    \Illuminate\Support\Facades\Artisan::call('optimize');
 
     return 'App optimized. <a href="/">Go back to dashboard</a>';
 });
