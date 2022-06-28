@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RegisterController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,15 +16,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\HomeController::class, 'dashboard']);
+Route::get('/', [HomeController::class, 'dashboard']);
 
-Route::post('/register', [\App\Http\Controllers\RegisterController::class, 'registerUser'])
-    ->name('register.registerUser');
-Route::get('/register', [\App\Http\Controllers\RegisterController::class, 'showForm'])
-    ->name('register.showForm');
+\Illuminate\Support\Facades\Auth::routes(['register' => false]);
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::post('/register', [RegisterController::class, 'registerUser'])
+        ->name('register.registerUser');
+
+    Route::get('/register', [RegisterController::class, 'showForm'])
+        ->name('register.showForm');
+});
 
 Route::get('/optimize', function () {
-    \Illuminate\Support\Facades\Artisan::call('optimize');
+    Artisan::call('optimize');
 
     return 'App optimized. <a href="/">Go back to dashboard</a>';
 });
