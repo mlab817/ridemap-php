@@ -20,7 +20,7 @@ applications with the database. It has only two main pages:
 1. Dashboard; and
 2. Registration.
 
-The dashboard and registration page uses [Inertia.js](https://inertiajs.com/) and [React](https://reactjs.org/).
+The dashboard and registration pages use [Inertia.js](https://inertiajs.com/) and [React](https://reactjs.org/).
 The chart in the dashboard uses [React-Vis](https://uber.github.io/react-vis/).
 
 On the other hand, it has the following API endpoints that
