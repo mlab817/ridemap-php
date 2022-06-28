@@ -19,7 +19,7 @@ class Station extends Model
         return $this->hasMany(PassengerQr::class);
     }
 
-    public function passengers_counts()
+    public function passenger_counts()
     {
         return $this->hasMany(PassengerCount::class, 'station_id');
     }
