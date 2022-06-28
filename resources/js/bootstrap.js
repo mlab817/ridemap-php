@@ -30,3 +30,16 @@ window.Echo = new Echo({
     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
     forceTLS: true
 });
+
+import React from 'react'
+import { createRoot } from "react-dom/client";
+import { createInertiaApp } from '@inertiajs/inertia-react'
+
+const root = createRoot(document.getElementById('app'))
+
+createInertiaApp({
+    resolve: name => require(`./Pages/${name}`),
+    setup({ el, App, props }) {
+        root.render(<App {...props} />)
+    },
+})

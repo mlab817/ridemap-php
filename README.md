@@ -1,64 +1,136 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
-
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+    <a href="https://github.com/mlab817/ridemap-php.git" target="_blank">
+        <img src="https://user-images.githubusercontent.com/29625844/176083891-c21475f9-430a-45f8-80ad-f097b4522f4d.png" width="400">
+    </a>
 </p>
 
-## About Laravel
+## About RIDEMAP
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Ridemap is a web + mobile application designed to monitor ridership demand
+under the Public Utility Vehicle Service Contracting  (PUVSC) Program.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Under the Hood
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+This web application was developed through [Laravel](https://laravel.com) -
+a web application framework with expressive, elegant syntax built using PHP.
 
-## Learning Laravel
+This main purpose of this app is to bridge the mobile
+applications with the database. It has only two main pages:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. Dashboard; and
+2. Registration.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+The dashboard and registration page uses [Inertia.js](https://inertiajs.com/) and [React](https://reactjs.org/).
+The chart in the dashboard uses [React-Vis](https://uber.github.io/react-vis/).
 
-## Laravel Sponsors
+On the other hand, it has the following API endpoints that
+can be accessed by mobile apps mainly to handle device authentication
+and submission of data:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+| Method | Endpoint | Description                                |
+|--------|----------|--------------------------------------------|
+|Authentication
+| POST   | /api/register | Handles registration of users via api      |
+| GET    | /api/me | Retrieves user information when logged in  |
+| POST   | /api/refresh | Refresh user token                         |
+| POST   | /api/login | Login via email and password               |
+| POST   | /api/device-auth | Login using device ID                      |
+| Data Submission
+| GET    | /api/stations | Returns list of stations                   |   
+| POST   | /api/faces | Receives and saves data on faces detected  |
+| POST   | /api/passenger-count | Receives and saves data on passenger count |
+| POST   | /api/qrs | Receives and saves data on QR scanned      |
+| POST   | /api/faces | Receives and saves data on faces detected  |
 
-### Premium Partners
+## Requirements
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Composer:
 
-## Contributing
+- "php": "^7.3|^8.0",
+- "fruitcake/laravel-cors": "^2.0",
+- "guzzlehttp/guzzle": "^7.0.1",
+- "inertiajs/inertia-laravel": "^0.6.3",
+- "laravel/framework": "^8.75",
+- "laravel/sanctum": "^2.11",
+- "laravel/tinker": "^2.5",
+- "laravel/ui": "^3.4",
+- "php-open-source-saver/jwt-auth": "^1.4"
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+NPM:
 
-## Code of Conduct
+- "@babel/preset-react": "^7.18.6",
+- "@inertiajs/inertia": "^0.11.0",
+- "@inertiajs/inertia-react": "^0.8.0",
+- "babel-preset-react": "^6.24.1",
+- "echarts": "^5.3.3",
+- "laravel-echo": "^1.12.0",
+- "pusher-js": "^7.1.1-beta",
+- "react": "^18.2.0",
+- "react-dom": "^18.2.0",
+- "react-vis": "^1.11.7"
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Pre-deployment
 
-## Security Vulnerabilities
+Make sure to run `npm run prod` to compile the js and css assets. This will generate
+the js and css files as `public/js/app.js` and `public/css/app.css` files, respectively.
+Laravel will automatically map its assets to this location.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Deployment
 
-## License
+This web application can be deployed on servers that support PHP version 7.3 and up.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Direct Upload
+
+1. Update the config variables `.env` file particularly the following:
+
+```dotenv
+# App configuration
+APP_NAME=
+APP_ENV=
+APP_KEY=
+APP_DEBUG=
+APP_URL=
+
+# Database credentials
+DB_HOST=
+DB_PORT=
+DB_DATABASE=
+DB_USERNAME=
+DB_PASSWORD=
+```
+
+2. Zip the folder.
+3. Upload the folder to the server.
+4. Unzip the file.
+5. (Optional) Run `php artisan optimize` in the command line / terminal to cache the views, routes, and config
+to speed up the app.
+
+### Git Version Control
+
+1. Clone the repository to the server using `git clone https://github.com/mlab817/ridemap-php.git`.
+Replace the provided repository URL with your repo url.
+2. Duplicate the `.env.example` and rename to `.env` using `cp .env.example .env`.
+3. Update the configuration values similar to the above.
+4. Run `composer install` and `npm install` to install the dependencies.
+5. Run `npm run prod` to build the js and css assets.
+
+Note: For the database, you can dump your local database and restore it
+in the server database.
+
+## Mobiles Apps
+
+Mobile apps are used to collect data for the ridership demand. There 
+are four prototype versions of the app that needs to be tested and
+enhanced based on the performance in the field as well as other
+factors.
+
+1. [Ridemap Counter](https://github.com/mlab817/ridemap-counter)
+2. [Ridemap Face Scanner](https://github.com/mlab817/ridemap-face-scanner)
+3. [Ridemap QR Scanner](https://github.com/mlab817/ridemap-qr)
+4. [Ridemap Kiosk](https://github.com/mlab817/ridemap-kiosk)
+
+Click on their respective link to learn more.
+
+## Author
+
+This web app is developed by [Mark Lester Bolotaolo](https://github.com/mlab817).
