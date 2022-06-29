@@ -268,6 +268,13 @@ DB_PASSWORD=
 5. (Optional) Run `php artisan optimize` in the command line / terminal to cache the views, routes, and config
 to speed up the app.
 
+## Screenshots
+
+| Dashboard   | Register   |
+|:-----------:|:----------:|
+|![Dashboard](https://user-images.githubusercontent.com/29625844/176326426-a1986c2f-50bc-43c2-8365-8c4b182d668a.png) | ![Register](https://user-images.githubusercontent.com/29625844/176326415-d8dc7c52-5f63-4f08-abea-324628cc09b7.png) |
+
+
 ## Mobile Apps
 
 Mobile apps are used to collect data for the ridership demand. There 
