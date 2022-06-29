@@ -4,7 +4,7 @@
     </a>
 </p>
 
-# Content
+# :oncoming_bus: Content
 
 - [About](#about)
 
@@ -19,18 +19,18 @@
 - [Basic Troubleshooting](#basic-troubleshooting)
 - [Author](#author)
 
-## About
+## :question: About
 
 Ridemap is a web + mobile application designed to monitor ridership demand
 under the Public Utility Vehicle Service Contracting  (PUVSC) Program.
 
-## Overview
+## :boom: Overview
 
 This web application was developed through [Laravel](https://laravel.com) -
 a web application framework with expressive, elegant syntax built using PHP.
 
 The main purpose of this app is to bridge the mobile
-applications with the database. It has only two main pages:
+applications with the database. It has two pages:
 
 1. Dashboard; and
 2. Registration.
@@ -39,27 +39,27 @@ The dashboard and registration pages use [Inertia.js](https://inertiajs.com/) an
 The chart in the dashboard uses [React-Vis](https://uber.github.io/react-vis/).
 
 On the other hand, it has the following API endpoints that
-can be accessed by mobile apps mainly to handle device authentication
+can be accessed by mobile apps to handle device authentication
 and submission of data:
 
-| Method | Endpoint | Description                                |
-|--------|----------|--------------------------------------------|
+| Method | Endpoint | Description                                           |
+|--------|----------|-------------------------------------------------------|
 |Authentication
-| POST   | /api/register | Handles registration of users via api      |
-| GET    | /api/me | Retrieves user information when logged in  |
-| POST   | /api/refresh | Refresh user token                         |
-| POST   | /api/login | Login via email and password               |
-| POST   | /api/device-auth | Login using device ID                      |
+| POST   | /api/register | Handles registration of users via api            |
+| GET    | /api/me | Retrieves user information when logged in              |
+| POST   | /api/refresh | Refresh user token                                |
+| POST   | /api/login | Login via email and password                        |
+| POST   | /api/device-auth | Login using device ID                         |
 | Data Submission
-| GET    | /api/stations | Returns list of stations                   |   
-| POST   | /api/faces | Receives and saves data on faces detected  |
-| POST   | /api/passenger-count | Receives and saves data on passenger count |
-| POST   | /api/qrs | Receives and saves data on QR scanned      |
-| POST   | /api/faces | Receives and saves data on faces detected  |
+| GET    | /api/stations | Returns list of stations                         |   
+| POST   | /api/faces | Receives and saves data on faces detected           |
+| POST   | /api/passenger-count | Receives and saves data on passenger count|
+| POST   | /api/qrs | Receives and saves data on QR scanned                 |
+| POST   | /api/faces | Receives and saves data on faces detected           |
 
-## Requirements
+## :exclamation: Requirements
 
-To update this app, you must have the following:
+To develop this app, you must have the following:
 
 1. PHP 7.3 and up
 2. Composer
@@ -70,6 +70,9 @@ To update this app, you must have the following:
 It is recommended to use [Laragon](https://laragon.org) as the development environment for Laravel
 as it already contains requirements 1-5. You can either install github as CLI or GUI using Github
 Desktop.
+
+For IDE, PhpStorm is highly recommended but VS Code and ATOM can also be used. You can use notepad, 
+notepad++, ms word, or any other text editor if you like to write code in hard mode. :trollface:
 
 Composer dependencies:
 
@@ -83,24 +86,29 @@ Composer dependencies:
 - "laravel/ui": "^3.4",
 - "php-open-source-saver/jwt-auth": "^1.4"
 
-You can install composer dependencies using the command which will install dependencies
-based on the `composer.lock` file:
+You can install composer dependencies based on the `composer.lock` file using the command:
 
 ```console
 composer install
 ```
 
-If you wish to update dependencies versions, you may run the following instead:
+If you wish to update dependency versions, you may run the following instead:
 
 ```console
 composer update
 ```
+
+> :skull: Try not to, however, because updating packages can break your app. Do it only if you know what you're doing.
 
 To install new dependencies, just run:
 
 ```console
 composer require vendor/package
 ```
+
+> :no_good: Important: This app has been intentionally developed with Laravel `8.*` to ensure
+compatibility with most servers as the latest version of Laravel no longer
+supports PHP versions below 8.0.
 
 NPM dependencies:
 
@@ -115,11 +123,7 @@ NPM dependencies:
 - "react-dom": "^18.2.0",
 - "react-vis": "^1.11.7"
 
-> Important: This app has been intentionally developed with Laravel `8.*` to ensure
-compatibility with most servers as the latest version of Laravel no longer
-supports PHP versions below 8.0.
-
-## Getting Started
+## :rocket: Getting Started
 
 Once you have the requirements, follow the following to set up your development environment:
 
@@ -188,7 +192,7 @@ npm run watch
 php artisan serve
 ```
 
-## Folder Structure
+## :file_folder: Folder Structure
 
 1. app - contains files specific to the app. This is where your models and controllers are contained
 2. bootstrap - autogenerated files
@@ -203,11 +207,11 @@ php artisan serve
 11. tests - this is where test files are stored
 12. vendor - composer dependencies
 
-## Entity Relationship Diagram
+## :raising_hand: Entity Relationship Diagram
 
 <img src="https://user-images.githubusercontent.com/29625844/176199658-a8867c79-e6fb-4903-b233-7a656d33de19.png" width="400" alt="ridemap erd">
 
-## Pre-deployment
+## :oncoming_bus: Pre-deployment
 
 To compile the JS and CSS assets, run the following command:
 
@@ -238,11 +242,11 @@ public function register()
 > it is recommended to clear the browser cache. The alternative is to disable caching of assets
 > but this could cause performance issues as assets will then be downloaded for every page refresh. 
 
-## Deployment
+## :oncoming_bus: Deployment
 
 This web application can be deployed on servers that support PHP version 7.3 and up.
 
-### Direct Upload
+### :oncoming_bus: Direct Upload
 
 1. Update the config variables `.env` file particularly the following:
 
@@ -268,14 +272,14 @@ DB_PASSWORD=
 5. (Optional) Run `php artisan optimize` in the command line / terminal to cache the views, routes, and config
 to speed up the app.
 
-## Screenshots
+## :oncoming_bus: Screenshots
 
 | Dashboard   | Register   |
 |:-----------:|:----------:|
 |![Dashboard](https://user-images.githubusercontent.com/29625844/176326426-a1986c2f-50bc-43c2-8365-8c4b182d668a.png) | ![Register](https://user-images.githubusercontent.com/29625844/176326415-d8dc7c52-5f63-4f08-abea-324628cc09b7.png) |
 
 
-## Mobile Apps
+## :iphone: Mobile Apps
 
 Mobile apps are used to collect data for the ridership demand. There 
 are four prototype versions of the app that needs to be tested and
@@ -289,7 +293,7 @@ factors.
 
 Click on their respective link to learn more.
 
-## Basic Troubleshooting
+## :hammer: Basic Troubleshooting
 
 Below is a compilation of some tips and common errors encountered when using Laravel:
 
@@ -317,6 +321,6 @@ use section of files.
 Run `php artisan route:clear`. You may also run `php artisan route:list` to view all
 existing routes of the application.
 
-## Author
+## :oncoming_bus: Author
 
 This web app is developed by [Mark Lester Bolotaolo](https://github.com/mlab817).
