@@ -272,6 +272,15 @@ DB_PASSWORD=
 5. (Optional) Run `php artisan optimize` in the command line / terminal to cache the views, routes, and config
 to speed up the app.
 
+## Test Account
+
+You may use the following test account to create devices:
+
+```dotenv
+EMAIL: admin@admin.com
+PASSWORD: admin
+```
+
 ## :oncoming_bus: Screenshots
 
 | Dashboard   | Register   |
