@@ -24,6 +24,10 @@ class FaceController extends Controller
      */
     public function __invoke(Request $request)
     {
+        $request->validate([
+            'faces' => 'required|array',
+        ]);
+
         $faces = $request->faces;
 
         $userId = Auth::guard('api')->id();

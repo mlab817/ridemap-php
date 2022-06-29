@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
          \App\Models\User::create([
              'name' => 'Admin User',
              'email' => 'admin@admin.com',
-             'password' => Hash::make('password'),
+             'password' => Hash::make('admin'),
              'device_id' => 'E999456F-DF6A-47E1-B652-170426117CBB'
          ]);
 

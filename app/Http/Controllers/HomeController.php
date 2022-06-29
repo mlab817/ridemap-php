@@ -59,7 +59,7 @@ class HomeController extends Controller
                     return [
                         'id'    => $station->id,
                         'name'  => $station->name,
-                        'count' => $station->passenger_counts_sum_passenger_in,
+                        'count' => (int) $station->passenger_counts_sum_passenger_in,
                     ];
                 });
         }

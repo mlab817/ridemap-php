@@ -23,6 +23,10 @@ class PassengerQrController extends Controller
      */
     public function __invoke(Request $request)
     {
+        $request->validate([
+            'scans' => 'required|array',
+        ]);
+
         $scans = $request->scans;
 
         $userId = Auth::guard('api')->id();

@@ -13,15 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\HomeController::class, 'dashboard']);
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'dashboard'])
+    ->name('home');
 
-Route::post('/register', [\App\Http\Controllers\RegisterController::class, 'registerUser'])
-    ->name('register.registerUser');
-Route::get('/register', [\App\Http\Controllers\RegisterController::class, 'showForm'])
-    ->name('register.showForm');
+\Illuminate\Support\Facades\Auth::routes(['register' => false]);
 
-Route::get('/optimize', function () {
-    \Illuminate\Support\Facades\Artisan::call('optimize');
+Route::group(['middleware' => 'auth'], function() {
 
-    return 'App optimized. <a href="/">Go back to dashboard</a>';
+    // register new user
+    Route::post('/create-user', [\App\Http\Controllers\RegisterController::class, 'registerUser'])
+        ->name('create-user.registerUser');
+    Route::get('/create-user', [\App\Http\Controllers\RegisterController::class, 'showForm'])
+        ->name('create-user.showForm');
+
+
+    // clear and cache routes, views, files
+    Route::get('/optimize', function () {
+        \Illuminate\Support\Facades\Artisan::call('optimize');
+
+        return 'App optimized. <a href="/">Go back to dashboard</a>';
+    });
 });

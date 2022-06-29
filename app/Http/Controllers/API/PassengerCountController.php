@@ -17,14 +17,21 @@ class PassengerCountController extends Controller
 
     public function store(Request $request)
     {
-        $passenger = PassengerCount::create($request->except('scanned_at'));
-        $passenger->scanned_at = Carbon::parse($request->scanned_at);
-        $passenger->user_id = auth('api')->id();
-        $passenger->save();
+        $request->validate([
+            'station_id'    => 'required|exists:stations,id',
+            'passenger_in'  => 'nullable|numeric',
+            'passenger_out' => 'nullable|numeric',
+            'scanned_at'    => 'nullable',
+        ]);
+
+        $passengerCount = PassengerCount::create($request->except('scanned_at'));
+        $passengerCount->scanned_at = Carbon::parse($request->scanned_at);
+        $passengerCount->user_id = auth('api')->id();
+        $passengerCount->save();
 
         return response()->json([
             'success' => true,
-            'data' => $passenger,
+            'data' => $passengerCount,
         ]);
     }
 

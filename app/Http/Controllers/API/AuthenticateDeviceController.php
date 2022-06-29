@@ -27,7 +27,7 @@ class AuthenticateDeviceController extends Controller
             ]);
         }
 
-        $token = Auth::login($user);
+        $token = Auth::guard('api')->login($user);
 
         return response()->json([
             'token'     => $token,
