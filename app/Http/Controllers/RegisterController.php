@@ -31,7 +31,7 @@ class RegisterController extends Controller
             'device_id' => $request->device_id,
         ]);
 
-        return Redirect::route('register.showForm')
+        return Redirect::route('create-user.showForm')
             ->with('message','Successfully registered user: ' . $user->name);
     }
 }
