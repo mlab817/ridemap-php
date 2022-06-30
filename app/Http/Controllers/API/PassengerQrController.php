@@ -46,7 +46,7 @@ class PassengerQrController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $scansAdded . ' inserted into the database.'
+            'message' => $scansAdded . ' inserted into the database.'
         ]);
     }
 }

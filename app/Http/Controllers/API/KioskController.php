@@ -43,12 +43,12 @@ class KioskController extends Controller
 
             return response()->json([
                 'success' => true,
-                'data' => $successfulInsert . ' inserted into database.',
+                'message' => $successfulInsert . ' inserted into database.',
             ]);
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
-                'data'    => $e->getMessage(),
+                'message'    => $e->getMessage(),
             ]);
         }
     }

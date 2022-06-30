@@ -31,7 +31,7 @@ class PassengerCountController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $passengerCount,
+            'message' => $passengerCount . ' inserted into the database.',
         ]);
     }
 

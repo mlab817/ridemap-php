@@ -45,7 +45,7 @@ class FaceController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => count($faces) . ' inserted to database.',
+            'message' => count($faces) . ' inserted into the database.',
         ]);
     }
 }

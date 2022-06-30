@@ -5,8 +5,6 @@ import {usePage} from "@inertiajs/inertia-react";
 const Layout = ({ children }) => {
     const { auth: { user } } = usePage().props
 
-    console.log(user)
-
     const handleLogout = () => {
         Inertia.post('/logout')
     }
