@@ -281,12 +281,15 @@ EMAIL: admin@admin.com
 PASSWORD: admin
 ```
 
-## :oncoming_bus: Screenshots
+## :camera: Screenshots
 
-| Dashboard   | Register   |
-|:-----------:|:----------:|
-|![Dashboard](https://user-images.githubusercontent.com/29625844/176326426-a1986c2f-50bc-43c2-8365-8c4b182d668a.png) | ![Register](https://user-images.githubusercontent.com/29625844/176326415-d8dc7c52-5f63-4f08-abea-324628cc09b7.png) |
+| Login   | Register   | Dashboard  |
+|:-----------:|:----------:|:------:|
+|![Login](https://user-images.githubusercontent.com/29625844/176570077-33bd819c-bfa1-4767-ad6a-362c5a6e65c5.png) | ![Create User](https://user-images.githubusercontent.com/29625844/176570090-b7be8e83-ddd5-4318-8666-ecc93026fe23.png) | ![Dashboard](https://user-images.githubusercontent.com/29625844/176570096-759cd19d-b9be-4cf8-ac8c-88e2fdfe246e.png) |
 
+1. Screen 1 - Login with email and password. [Test Account](#test-account)
+2. Screen 2 - Register user. You can type the device ID or upload a QR
+3. Screen 3 - Dashboard showing number of passengers per station and per type of data capture
 
 ## :iphone: Mobile Apps
 
