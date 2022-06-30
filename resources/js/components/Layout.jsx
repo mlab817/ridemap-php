@@ -12,36 +12,45 @@ const Layout = ({ children }) => {
     }
 
     return (
-        <div className="container-fluid">
-            <nav className="navbar navbar-dark bg-dark">
-                <div className="container-fluid">
+        <div className="container-fluid p-0">
+            <nav className="navbar navbar-expand-lg navbar-light bg-light shadow">
+                <div className="container-fluid px-4">
                     <a className="navbar-brand" href="#">
                         <img src="/images/banner.png" alt="" height={30} />
                     </a>
-                    <div className="navbar-expand" id="navbarScroll">
-                        <ul className="navbar-nav ms-auto my-2 my-lg-0">
-                            <li className="nav-item me-2">
-                                <a className="nav-link active" aria-current="page" href="/">
+
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav me-auto my-2 my-lg-0">
+                            <li className="nav-item">
+                                <a className="nav-link" aria-current="page" href="/">
                                     Dashboard
                                 </a>
                             </li>
-                            <a href="/create-user" className="btn btn-primary me-2">
-                                Register
-                            </a>
-                            {
-                                user
-                                    ? (<button onClick={handleLogout} className="btn btn-danger">
-                                        Logout
-                                    </button>)
-                                    : (<a href="/login" className="btn btn-outline-success">Login</a>)
-                            }
-
+                            <li className="nav-item">
+                                <a href="/create-user" className="nav-link">
+                                    Create User
+                                </a>
+                            </li>
                         </ul>
                     </div>
+
+                    {
+                        user
+                            ? (<button onClick={handleLogout} className="btn btn-danger">
+                                Logout
+                            </button>)
+                            : (<a href="/login" className="btn btn-success">Login</a>)
+                    }
                 </div>
             </nav>
 
-            <main className="py-4">
+            <main className=" px-4 py-4">
                 {children}
             </main>
         </div>

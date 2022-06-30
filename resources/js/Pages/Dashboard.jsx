@@ -17,7 +17,9 @@ const Dashboard = ({ stations, type }) => {
 
             <div className="card">
                 <div className="card-header">
-                    Dashboard
+                    <h5 className="h5">
+                        Dashboard
+                    </h5>
                 </div>
 
                 <div className="card-body">

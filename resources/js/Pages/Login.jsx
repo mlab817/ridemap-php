@@ -22,16 +22,19 @@ const LoginPage = () => {
 
     return (
         <div className="container mt-5">
+            <div className="row text-center">
+                <div className="col">
+                    <img height={100} src="/images/banner.png" alt="Ridemap Logo" />
+                </div>
+            </div>
+
             <div className="row justify-content-center">
-                <div className="col-md-8">
+                <div className="col-md-6">
                     <div className="card">
                         <div className="card-header text-center">
-                            <img height={100} src="/images/banner.png" alt="Ridemap Logo" />
+                            Login to your Ridemap account
                         </div>
                         <div className="card-body">
-                            <p className="text-center">
-                                Login to your account
-                            </p>
 
                             <form onSubmit={handleSubmit}>
                                 <div className="form-group row mb-3">
@@ -66,9 +69,13 @@ const LoginPage = () => {
                                     <div className="col-sm-8 offset-sm-4">
                                         <button disabled={processing} type="submit" className="btn btn-primary">
                                             {
-                                                processing ? 'Submitting...' : 'Submit'
+                                                processing ? 'Processing...' : 'Submit'
                                             }
                                         </button>
+
+                                        <a href="/" className="ms-2">
+                                            Back to Dashboard
+                                        </a>
                                     </div>
                                 </div>
                             </form>
